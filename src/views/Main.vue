@@ -1,10 +1,12 @@
 <template>
   <el-container style="height: 100%">
     <el-aside width="auto">
-      <CommonAside/>
+      <CommonAside />
     </el-aside>
     <el-container>
-      <el-header width="auto">Header</el-header>
+      <el-header width="auto">
+        <CommonHeader />
+      </el-header>
       <el-main>
         <router-view></router-view>
       </el-main>
@@ -13,11 +15,13 @@
 </template>
 
 <script>
-import CommonAside from '../components/CommonAside'
+import CommonAside from "../components/CommonAside";
+import CommonHeader from "../components/CommonHeader";
 export default {
   name: "Home",
-  components:{
-    CommonAside
+  components: {
+    CommonAside,
+    CommonHeader,
   },
   data() {
     return {};

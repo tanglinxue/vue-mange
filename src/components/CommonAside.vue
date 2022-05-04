@@ -10,17 +10,28 @@
     :collapse="isCollapse"
   >
     <h3>通用后台管理系统</h3>
-    <el-menu-item :index="item.path" v-for="item in noChildren" :key='item.path' @click='clickMenu(item)'>
+    <el-menu-item
+      :index="item.path"
+      v-for="item in noChildren"
+      :key="item.path"
+      @click="clickMenu(item)"
+    >
       <i :class="`el-icon-${item.icon}`"></i>
-      <span slot="title">{{item.label}}</span>
+      <span slot="title">{{ item.label }}</span>
     </el-menu-item>
-    <el-submenu :index="item.path" v-for="item in hasChildren" :key='item.path'>
+    <el-submenu
+      :index="item.path + ''"
+      v-for="item in hasChildren"
+      :key="item.path"
+    >
       <template slot="title">
         <i :class="`el-icon-${item.icon}`"></i>
-        <span slot="title">{{item.label}}</span>
+        <span slot="title">{{ item.label }}</span>
       </template>
-      <el-menu-item-group v-for="(subItm) in item.children" :key='subItm.path'>
-        <el-menu-item :index="subItm.path">{{subItm.label}}</el-menu-item>
+      <el-menu-item-group v-for="subItm in item.children" :key="subItm.path">
+        <el-menu-item :index="subItm.path + ''">{{
+          subItm.label
+        }}</el-menu-item>
       </el-menu-item-group>
     </el-submenu>
   </el-menu>
@@ -30,7 +41,6 @@
 export default {
   data() {
     return {
-      isCollapse: false,
       menu: [
         {
           path: "/",
@@ -83,20 +93,25 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
-    clickMenu(item){
+    clickMenu(item) {
       this.$router.push({
-        name:item.name
-      })
-    }
-  },
-  computed:{
-    noChildren(){
-      return this.menu.filter(item=>!item.children)
+        name: item.name,
+      });
     },
-    hasChildren(){
-      return this.menu.filter(item=>item.children)
-    }
-  }
+  },
+  computed: {
+    noChildren() {
+      return this.menu.filter((item) => !item.children);
+    },
+    hasChildren() {
+      return this.menu.filter((item) => item.children);
+    },
+    isCollapse() {
+      // console.log(this.$store.tab.state);
+      // return this.$store.tab.state.isCollapse;
+      return true;
+    },
+  },
 };
 </script>
 
@@ -105,13 +120,13 @@ export default {
   width: 200px;
   min-height: 400px;
 }
-.el-menu{
-  height:100%;
-  border:none;
-  h3{
-    color:#fff;
+.el-menu {
+  height: 100%;
+  border: none;
+  h3 {
+    color: #fff;
     text-align: center;
-    line-height:48px
+    line-height: 48px;
   }
 }
 </style>
