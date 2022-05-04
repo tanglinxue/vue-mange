@@ -9,7 +9,7 @@
     @close="handleClose"
     :collapse="isCollapse"
   >
-    <h3>通用后台管理系统</h3>
+    <h3>{{ isCollapse ? "后台" : "通用后台管理系统" }}</h3>
     <el-menu-item
       :index="item.path"
       v-for="item in noChildren"
@@ -107,9 +107,7 @@ export default {
       return this.menu.filter((item) => item.children);
     },
     isCollapse() {
-      // console.log(this.$store.tab.state);
-      // return this.$store.tab.state.isCollapse;
-      return true;
+      return this.$store.state.tab.isCollapse;
     },
   },
 };
