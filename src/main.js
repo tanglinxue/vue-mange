@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import { Button, Radio, Container, Header, Main, Aside, Menu, Submenu, MenuItem, MenuItemGroup, DropdownItem, Dropdown, DropdownMenu } from 'element-ui'
+import { Button, Radio, Container, Header, Main, Aside, Menu, Submenu, MenuItem, MenuItemGroup, DropdownItem, Dropdown, DropdownMenu,Row,Col,Card,Table,TableColumn } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/less/index.less'
 import store from './store/index.js'
@@ -22,6 +22,11 @@ Vue.use(MenuItemGroup)
 Vue.use(Dropdown)
 Vue.use(DropdownItem)
 Vue.use(DropdownMenu)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Card)
+Vue.use(Table)
+Vue.use(TableColumn)
 new Vue({
   store,
   render: h => h(App),
