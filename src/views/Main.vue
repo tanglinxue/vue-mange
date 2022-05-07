@@ -7,6 +7,7 @@
       <el-header width="auto">
         <CommonHeader />
       </el-header>
+      <CommonTag/>
       <el-main>
         <router-view></router-view>
       </el-main>
@@ -17,11 +18,13 @@
 <script>
 import CommonAside from "../components/CommonAside";
 import CommonHeader from "../components/CommonHeader";
+import CommonTag from "../components/CommonTag";
 export default {
   name: "Home",
   components: {
     CommonAside,
     CommonHeader,
+    CommonTag
   },
   data() {
     return {};

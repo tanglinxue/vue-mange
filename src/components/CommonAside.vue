@@ -1,7 +1,7 @@
 <template>
   <el-menu
     default-active="1-4-1"
-    class="el-menu-vertical-demo"
+   class="el-menu-vertical-demo"
     background-color="#545c64"
     text-color="#fff"
     active-text-color="#ffd04b"
@@ -29,7 +29,7 @@
         <span slot="title">{{ item.label }}</span>
       </template>
       <el-menu-item-group v-for="subItm in item.children" :key="subItm.path">
-        <el-menu-item :index="subItm.path + ''">{{
+        <el-menu-item :index="subItm.path + ''"  @click="clickMenu(subItm)">{{
           subItm.label
         }}</el-menu-item>
       </el-menu-item-group>
@@ -42,47 +42,8 @@ export default {
   data() {
     return {
       menu: [
-        {
-          path: "/",
-          name: "home",
-          label: "首页",
-          icon: "s-home",
-          url: "Home/Home",
-        },
-        {
-          path: "/mall",
-          name: "mall",
-          label: "商品管理",
-          icon: "video-play",
-          url: "Mall/Mall",
-        },
-        {
-          path: "/user",
-          name: "user",
-          label: "用户管理",
-          icon: "user",
-          url: "User/User",
-        },
-        {
-          label: "其他",
-          icon: "location",
-          children: [
-            {
-              path: "/page1",
-              name: "page1",
-              label: "页面1",
-              icon: "setting",
-              url: "Other/PageOne",
-            },
-            {
-              path: "/page2",
-              name: "page2",
-              label: "页面2",
-              icon: "setting",
-              url: "Other/PageTwo",
-            },
-          ],
-        },
+        
+
       ],
     };
   },
@@ -97,18 +58,22 @@ export default {
       this.$router.push({
         name: item.name,
       });
+      this.$store.commit('tab/selectMenu',item)
     },
   },
   computed: {
     noChildren() {
-      return this.menu.filter((item) => !item.children);
+      return this.syncMenu.filter((item) => !item.children);
     },
     hasChildren() {
-      return this.menu.filter((item) => item.children);
+      return this.syncMenu.filter((item) => item.children);
     },
     isCollapse() {
       return this.$store.state.tab.isCollapse;
     },
+     syncMenu() {
+      return this.$store.state.tab.menu
+    }
   },
 };
 </script>
